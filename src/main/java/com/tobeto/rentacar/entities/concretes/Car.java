@@ -1,12 +1,12 @@
 package com.tobeto.rentacar.entities.concretes;
 
 import com.tobeto.rentacar.core.entitites.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -25,5 +25,9 @@ public class Car extends BaseEntity {
 
     @Column(name="dailyPrice")
     private double dailyPrice;
+
+    @ManyToOne()
+    @JoinColumn(name = "model_id")
+    private List<Model> models;
 
 }
