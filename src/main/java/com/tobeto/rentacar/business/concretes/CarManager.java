@@ -28,7 +28,7 @@ public class CarManager implements CarService {
         Car createdCar = this.carRepository.save(car);
         CreatedCarResponse createdCarResponse =
                 this.modelMapperService.forResponse().map(createdCar, CreatedCarResponse.class);
-        return new CreatedCarResponse();
+        return createdCarResponse;
     }
 
     @Override

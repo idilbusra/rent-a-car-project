@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class CreateModelRequest {
     private String name;
     private int brandId;
-    private  int fuelId;
-    private int transmissionId;
+   // private  int fuelId;
+   // private int transmissionId;
 }

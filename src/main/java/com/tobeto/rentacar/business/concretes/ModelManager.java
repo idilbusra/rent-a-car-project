@@ -24,7 +24,7 @@ public class ModelManager implements ModelService {
         Model createdModel = this.modelRepository.save(model);
         CreatedModelResponse createdModelResponse =
                 this.modelMapperService.forResponse().map(createdModel, CreatedModelResponse.class);
-        return new CreatedModelResponse();
+        return createdModelResponse;
     }
 
     @Override
