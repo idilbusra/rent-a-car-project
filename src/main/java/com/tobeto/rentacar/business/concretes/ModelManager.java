@@ -20,6 +20,7 @@ public class ModelManager implements ModelService {
     @Override
     public CreatedModelResponse add(CreateModelRequest createModelRequest) {
         Model model = this.modelMapperService.forRequest().map(createModelRequest, Model.class);
+        model.setId(0);
         model.setCreatedDate(LocalDateTime.now());
         Model createdModel = this.modelRepository.save(model);
         CreatedModelResponse createdModelResponse =

@@ -4,12 +4,12 @@ import com.tobeto.rentacar.business.abstracts.FuelService;
 import com.tobeto.rentacar.business.dtos.requests.CreateFuelRequest;
 import com.tobeto.rentacar.business.dtos.responses.CreatedFuelResponse;
 import com.tobeto.rentacar.business.dtos.responses.GetAllFuelResponse;
+import com.tobeto.rentacar.business.rules.FuelBusinessRules;
 import com.tobeto.rentacar.core.utilities.mapping.ModelMapperService;
 import com.tobeto.rentacar.dataAccess.abstracts.FuelRepository;
 import com.tobeto.rentacar.entities.concretes.Fuel;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,15 +18,17 @@ import java.util.List;
 public class FuelManager implements FuelService {
     private FuelRepository fuelRepository;
     private ModelMapperService modelMapperService;
+    private FuelBusinessRules fuelBusinessRules;
 
     @Override
     public CreatedFuelResponse add(CreateFuelRequest createFuelRequest) {
+        fuelBusinessRules.fuelNameCanNotBeDuplicated(createFuelRequest.getName());
         Fuel fuel = this.modelMapperService.forRequest().map(createFuelRequest, Fuel.class);
         fuel.setCreatedDate(LocalDateTime.now());
         Fuel createdFuel = this.fuelRepository.save(fuel);
         CreatedFuelResponse createdFuelResponse =
                 this.modelMapperService.forResponse().map(createdFuel, CreatedFuelResponse.class);
-        return new CreatedFuelResponse();
+        return createdFuelResponse;
     }
 
     @Override

@@ -24,7 +24,7 @@ public class TransmissionManager implements TransmissionService {
         Transmission createdTransmission = this.transmissionRepository.save(transmission);
         CreatedTransmissionResponse createdTransmissionResponse =
                 this.modelMapperService.forResponse().map(createdTransmission, CreatedTransmissionResponse.class);
-        return new CreatedTransmissionResponse();
+        return createdTransmissionResponse;
     }
     @Override
     public List<GetAllTransmissionResponse> getAll() {

@@ -25,6 +25,7 @@ public class CarManager implements CarService {
     public CreatedCarResponse add(CreateCarRequest createCarRequest) {
         Car car = this.modelMapperService.forRequest().map(createCarRequest, Car.class);
         car.setCreatedDate(LocalDateTime.now());
+        car.setId(0);//setId(0) ataması, yeni bir varlık oluşturulduğunda kullanılır ve mevcut bir ID olmadığını belirtir. Spring Data JPA'nın save() yöntemi çağrıldığında, bu geçici ID, veritabanında gerçek bir ID ile değiştirilecektir.
         Car createdCar = this.carRepository.save(car);
         CreatedCarResponse createdCarResponse =
                 this.modelMapperService.forResponse().map(createdCar, CreatedCarResponse.class);
