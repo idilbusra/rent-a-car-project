@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class GetAllModelResponse {
     private int id;
     private String name;
-    private int brandId;
-   // private  int fuelId;
-   // private int transmissionId;
+    private String brandName;
+    private String fuelName;
+    private String transmissionName;
 }

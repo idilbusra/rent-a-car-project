@@ -12,7 +12,7 @@ import java.util.List;
 
     @RestController
     @AllArgsConstructor
-    @RequestMapping("api/transmissions")
+    @RequestMapping("api/v1/transmissions")
     public class TransmissionsController {
         private TransmissionService transmissionService;
 

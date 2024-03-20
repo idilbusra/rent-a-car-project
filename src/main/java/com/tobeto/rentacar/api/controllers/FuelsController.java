@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/fuels")
+@RequestMapping("api/v1/fuels")
 public class FuelsController {
     private FuelService fuelService;
 
